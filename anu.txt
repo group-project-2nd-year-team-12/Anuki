@@ -1,14 +1,14 @@
-
 -- phpMyAdmin SQL Dump
--- version 5.0.2
+-- version 5.0.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 18, 2021 at 11:26 AM
--- Server version: 10.4.13-MariaDB
--- PHP Version: 7.4.8
+-- Generation Time: Mar 18, 2021 at 11:12 AM
+-- Server version: 10.4.11-MariaDB
+-- PHP Version: 7.4.3
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -77,7 +77,7 @@ CREATE TABLE `boarder` (
 --
 
 INSERT INTO `boarder` (`Bid`, `email`, `password`, `token`, `first_name`, `last_name`, `level`, `address`, `location_link`, `NIC`, `image`, `institute`, `gender`, `telephone`, `user_accepted`, `profileimage`) VALUES
-(37, 'lakshanamal100@gmail.com', '7c4a8d09ca3762af61e59520943dc26494f8941b', 'ff71a4724331ffdefe84434f8cce3ab1593094d8c766535064868846a6e6aa3a4000076417126684a0c96a0da9566f3e4649', 'kavindya', 'Lakshan', 'boarder', ' Mathara', '  ', '970920918v', '../resource/nicImage/about.jpg', 'University Of Colombo', 'Boy', '0715822454', 1, '../resource/Images/uploaded_profile_Image/drow.jpg'),
+(37, 'lakshanamal100@gmail.com', '7c4a8d09ca3762af61e59520943dc26494f8941b', 'ff71a4724331ffdefe84434f8cce3ab1593094d8c766535064868846a6e6aa3a4000076417126684a0c96a0da9566f3e4649', 'kavindya', 'Lakshan', 'boarder', ' Mathara', '  ', '970920918v', '../resource/nicImage/about.jpg', 'University Of Colombo', 'Boy', '0715822454', 1, '../resource/Images/d.jpg'),
 (38, 'ramya@gmail.com', '7c4a8d09ca3762af61e59520943dc26494f8941b', 'ccfe9538e548b63dfe9bf4fe536b6f959c585b6716f6d41ab6fd3fc401a0e13cac0e9f31fefd194f76f9aecd8dd753f2b995', 'Ramya', 'Rajapaksha', 'boarder', '  ', '  ', '966661788v', '../resource/nicImage/about.jpg', 'University Of Colombo', 'Girl', '0715823454', 1, '../resource/Images/a.jpg'),
 (39, 'thinuli@gmail.com', '7c4a8d09ca3762af61e59520943dc26494f8941b', '249136a000c90d67ab6f1ced3604c7879dd4d70c109d810255d5c2eb13d433097ff08a57022b92af46801a7715d8fe0b627d', 'Thinuli', 'Gothatuwa', 'boarder', '  ', '  ', '966611444v', '../resource/nicImage/about.jpg', 'University Of Colombo', 'Boy', '0715822421', 1, '../resource/Images/b.jpg'),
 (40, 'yamuna@gmail.com', '7c4a8d09ca3762af61e59520943dc26494f8941b', '10d66b29e2f3faed7777581e3d06f7ec46471c02b0d8fa3e48a5f69909fa846a414bf520753cfcf109da02efb11493e7ad79', 'Yamuna', 'Rajakaruna', 'boarder', '  ', '  ', '966511965v', '../resource/nicImage/about.jpg', 'University Of Colombo', 'Boy', '0715828954', 1, '../resource/Images/a.jpg'),
@@ -136,7 +136,7 @@ CREATE TABLE `boardings_owner` (
 --
 
 INSERT INTO `boardings_owner` (`BOid`, `email`, `password`, `token`, `first_name`, `last_name`, `level`, `NIC`, `address`, `location_link`, `account_no`, `user_accepted`, `profileimage`) VALUES
-(1, '2018cs165@stu.ucsc.cmb.ac.lk', '7c4a8d09ca3762af61e59520943dc26494f8941b', 'b6c351c2372493439a8aa6b377555ac4ab2a50d2c6a03fb88a8871c4e36ade089bcb431256df5c6c36ec92eadd77b4cb6c72', 'Supunpraba', 'Nimasha', 'boardings_owner', '', '310/1 ,Delgasduwa, Nuwaraeliya', '', 0, 1, '../resource/Images/b.jpg'),
+(1, '2018cs165@stu.ucsc.cmb.ac.lk', '7c4a8d09ca3762af61e59520943dc26494f8941b', 'b6c351c2372493439a8aa6b377555ac4ab2a50d2c6a03fb88a8871c4e36ade089bcb431256df5c6c36ec92eadd77b4cb6c72', 'Supunpraba', 'nimo', 'boardings_owner', '', '310/1 ,Delgasduwa, Nuwaraeliya', '', 0, 1, '../resource/Images/b.jpg'),
 (3, 'anugaya.alwis@gmail.com', '7c4a8d09ca3762af61e59520943dc26494f8941b', 'd41723e5c9ad1dadaf1e88d15c401b38116a0a0f2cb1022731444c6a8d50d5b4ff1d95b76a4d616afff06e55ef80bd227b6a', 'Anuki', 'Alwis', 'boardings_owner', '988581682v', 'Highlevel road, Makumbura', 'aaaaaa', 0, 1, '../resource/Images/a.jpg');
 
 -- --------------------------------------------------------
@@ -298,6 +298,7 @@ CREATE TABLE `food_request` (
   `is_accepted` int(1) NOT NULL,
   `term` varchar(10) NOT NULL DEFAULT 'shortTerm',
   `order_type` varchar(10) NOT NULL,
+  `shedule` varchar(10) NOT NULL,
   `restaurant` varchar(50) NOT NULL,
   `F_post_id` int(11) NOT NULL,
   `order_id` int(50) NOT NULL,
@@ -313,12 +314,18 @@ CREATE TABLE `food_request` (
 -- Dumping data for table `food_request`
 --
 
-INSERT INTO `food_request` (`request_id`, `email`, `address`, `first_name`, `last_name`, `is_accepted`, `term`, `order_type`, `restaurant`, `F_post_id`, `order_id`, `total`, `phone`, `method`, `time`, `expireTime`, `deliveredTime`) VALUES
-(704, 'lakshanamal100@gmail.com', '67/2,panvila,hikkaduwa', 'Kavi', 'Lakshan', 3, 'longTerm', 'lunch', 'Rasika Food Delivary Service', 2, 1609939764, 750, 755535393, 'cash', '2021-01-06 18:59:24', '2021-01-06 19:19:24', ''),
-(708, 'lakshanamal100@gmail.com', '67/2,panvila,hikkaduwa', 'Kavi', 'Lakshan', 2, 'shortTerm', 'breakfast', 'Rasika Food Delivary Service', 2, 1610014688, 1200, 755535393, 'card', '2021-01-07 15:48:08', '2021-01-07 16:08:08', ''),
-(709, 'lakshanamal100@gmail.com', '67/2,panvila,hikkaduwa', 'Kavi', 'Lakshan', 3, 'shortTerm', 'breakfast', 'Rasika Food Delivary Service', 2, 1610019429, 1500, 755535393, 'cash', '2021-01-07 17:07:09', '2021-01-07 17:27:09', ''),
-(714, 'lakshanamal100@gmail.com', '310/1,deldasduwa,dodanduwa', 'Kavi', 'Lakshan', 3, 'shortTerm', 'lunch', 'Rasika Food Delivary Service', 2, 1610217483, 230, 755535399, 'card', '2021-01-10 00:08:03', '2021-01-10 00:28:03', ''),
-(715, 'lakshanamal100@gmail.com', '67/2,panvila,hikkaduwa', 'Kavi', 'Lakshan', 4, 'shortTerm', 'breakfast', 'Rasika Food Delivary Service', 2, 1610224461, 600, 755535393, 'card', '2021-01-10 02:04:21', '2021-01-10 02:24:21', '03:22:09pm');
+INSERT INTO `food_request` (`request_id`, `email`, `address`, `first_name`, `last_name`, `is_accepted`, `term`, `order_type`, `shedule`, `restaurant`, `F_post_id`, `order_id`, `total`, `phone`, `method`, `time`, `expireTime`, `deliveredTime`) VALUES
+(780, 'lakshanamal100@gmail.com', '67/2,panvila,hikkaduwa', 'kavindya', 'Lakshan', 4, 'longTerm', 'lunch', 'now', 'Sri Ragavas Restaurant', 3, 1616016705, 300, 755535393, 'cash', '2021-03-18 03:01:45', '2021-03-18 03:11:54', '02:32:10pm'),
+(781, 'lakshanamal100@gmail.com', '67/2,panvila,hikkaduwa', 'kavindya', 'Lakshan', 4, 'shortTerm', 'lunch', 'now', 'Sri Ragavas Restaurant', 3, 1616022649, 130, 755535393, 'card', '2021-03-18 04:40:49', '2021-03-18 04:50:58', '02:30:14pm'),
+(782, 'lakshanamal100@gmail.com', '67/2,panvila,hikkaduwa', 'kavindya', 'Lakshan', 4, 'shortTerm', 'lunch', 'now', 'Sri Ragavas Restaurant', 3, 1616044033, 390, 755535393, 'card', '2021-03-18 10:37:13', '2021-03-18 10:47:21', '01:37:53pm'),
+(784, 'lakshanamal100@gmail.com', '67/2,panvila,hikkaduwa', 'kavindya', 'Lakshan', 0, 'shortTerm', 'lunch', 'now', 'Sri Ragavas Restaurant', 3, 1616058939, 390, 755535393, 'card', '2021-03-18 14:45:39', '2021-04-18 17:05:39', ''),
+(785, 'lakshanamal100@gmail.com', '67/2,panvila,hikkaduwa', 'kavindya', 'Lakshan', 0, 'shortTerm', 'lunch', 'now', 'Sri Ragavas Restaurant', 3, 1616058943, 390, 755535393, 'cash', '2021-03-18 14:45:43', '2021-03-18 17:05:43', ''),
+(786, 'lakshanamal100@gmail.com', '67/2,panvila,hikkaduwa', 'kavindya', 'Lakshan', 0, 'longTerm', 'lunch', 'now', 'Sri Ragavas Restaurant', 3, 1616058967, 540, 755535393, 'cash', '2021-03-18 14:46:07', '2021-03-18 17:06:07', ''),
+(787, 'lakshanamal100@gmail.com', '67/2,panvila,hikkaduwa', 'kavindya', 'Lakshan', 0, 'shortTerm', 'dinner', 'now', 'Sri Ragavas Restaurant', 3, 1616058998, 540, 755535393, 'card', '2021-03-18 14:46:38', '2021-03-18 17:06:38', ''),
+(788, 'lakshanamal100@gmail.com', '67/2,panvila,hikkaduwa', 'kavindya', 'Lakshan', 0, 'shortTerm', 'dinner', 'now', 'Sri Ragavas Restaurant', 3, 1616059001, 540, 755535393, 'cash', '2021-03-18 14:46:41', '2021-03-18 17:06:41', ''),
+(789, '2018cs030@stu.ucsc.cmb.ac.lk', '310/1,deldasduwa,dodanduwa', 'Gayara', 'Alwis', 0, 'shortTerm', 'dinner', 'now', 'Sri Ragavas Restaurant', 3, 1616060336, 390, 755535399, 'cash', '2021-03-18 15:08:56', '2021-03-18 15:28:56', ''),
+(791, 'lakshanamal100@gmail.com', '67/2,panvila,hikkaduwa', 'kavindya', 'Lakshan', 0, 'shortTerm', 'dinner', 'now', 'Sri Ragavas Restaurant', 3, 1616061512, 390, 755535393, 'card', '2021-03-18 15:28:32', '2021-03-18 15:48:32', ''),
+(792, 'lakshanamal100@gmail.com', '67/2,panvila,hikkaduwa', 'kavindya', 'Lakshan', 1, 'shortTerm', 'dinner', 'now', 'Sri Ragavas Restaurant', 3, 1616061567, 390, 755535393, 'card', '2021-03-18 15:29:27', '2021-03-18 15:39:41', '');
 
 -- --------------------------------------------------------
 
@@ -347,7 +354,7 @@ CREATE TABLE `food_supplier` (
 --
 
 INSERT INTO `food_supplier` (`FSid`, `email`, `password`, `token`, `first_name`, `last_name`, `level`, `NIC`, `address`, `location_link`, `user_accepted`, `profileimage`, `available`) VALUES
-(1, '2018cs092@stu.ucsc.cmb.ac.lk', '7c4a8d09ca3762af61e59520943dc26494f8941b', 'e5d8bae050c5853900781845961896bdf61b4d0be5706ed79cb0e0011b4bc33a8b208918cdb57410f218123695b19841606b', 'anuki', 'De Alwis', 'food_supplier', '0', 'Makumbura, Kottawa', 0, 1, '../resource/Images/b.jpg', 1),
+(1, '2018cs092@stu.ucsc.cmb.ac.lk', '7c4a8d09ca3762af61e59520943dc26494f8941b', 'e5d8bae050c5853900781845961896bdf61b4d0be5706ed79cb0e0011b4bc33a8b208918cdb57410f218123695b19841606b', 'anuki', 'De Alwis', 'food_supplier', '0', 'Makumbura, Kottawa', 0, 1, '../resource/Images/b.jpg', 0),
 (7, '2018cs030@stu.ucsc.cmb.ac.lk', '7c4a8d09ca3762af61e59520943dc26494f8941b', '004fe1780e38ac7134efec2bfc5ab0eca9bbe63bb635838e8734bd8f8672d3422c3c6187249229cb4286d9f378665169b245', 'Gayara', 'Alwis', 'food_supplier', '988581682v', 'Highlevel road, Makumbura', 0, 1, '../resource/Images/a.jpg', 1);
 
 -- --------------------------------------------------------
@@ -384,7 +391,25 @@ CREATE TABLE `livesupport` (
 
 INSERT INTO `livesupport` (`cId`, `admin`, `user`, `sender`, `sender_name`, `message`) VALUES
 (171, 'boadima7@gmail.com', '2018cs092@stu.ucsc.cmb.ac.lk', 'boadima7@gmail.com', 'Amal Lakshan', 'What can i do for you ?'),
-(172, 'boadima7@gmail.com', '2018cs092@stu.ucsc.cmb.ac.lk', '2018cs092@stu.ucsc.cmb.ac.lk', 'anuki De Alwis', 'how can i place a order ?');
+(172, 'boadima7@gmail.com', '2018cs092@stu.ucsc.cmb.ac.lk', '2018cs092@stu.ucsc.cmb.ac.lk', 'anuki De Alwis', 'how can i place a order ?'),
+(173, 'boadima7@gmail.com', 'lakshanamal100@gmail.com', 'lakshanamal100@gmail.com', 'kavindya Lakshan', ''),
+(174, 'boadima7@gmail.com', 'lakshanamal100@gmail.com', 'lakshanamal100@gmail.com', 'kavindya Lakshan', ''),
+(175, 'boadima7@gmail.com', 'lakshanamal100@gmail.com', 'lakshanamal100@gmail.com', 'kavindya Lakshan', ''),
+(176, 'boadima7@gmail.com', 'lakshanamal100@gmail.com', 'lakshanamal100@gmail.com', 'kavindya Lakshan', ''),
+(177, 'boadima7@gmail.com', 'lakshanamal100@gmail.com', 'lakshanamal100@gmail.com', 'kavindya Lakshan', ''),
+(178, 'boadima7@gmail.com', 'lakshanamal100@gmail.com', 'lakshanamal100@gmail.com', 'kavindya Lakshan', ''),
+(179, 'boadima7@gmail.com', 'lakshanamal100@gmail.com', 'lakshanamal100@gmail.com', 'kavindya Lakshan', 'jk'),
+(180, 'boadima7@gmail.com', 'lakshanamal100@gmail.com', 'lakshanamal100@gmail.com', 'kavindya Lakshan', 'sd'),
+(181, 'boadima7@gmail.com', 'lakshanamal100@gmail.com', 'lakshanamal100@gmail.com', 'kavindya Lakshan', 'df'),
+(182, 'boadima7@gmail.com', 'lakshanamal100@gmail.com', 'lakshanamal100@gmail.com', 'kavindya Lakshan', 'ay bn'),
+(183, 'boadima7@gmail.com', 'lakshanamal100@gmail.com', 'lakshanamal100@gmail.com', 'kavindya Lakshan', 'oubn'),
+(184, 'boadima7@gmail.com', 'lakshanamal100@gmail.com', 'lakshanamal100@gmail.com', 'kavindya Lakshan', 'nbbjx'),
+(185, 'boadima7@gmail.com', 'lakshanamal100@gmail.com', 'lakshanamal100@gmail.com', 'kavindya Lakshan', 'bhjbzx'),
+(186, 'boadima7@gmail.com', 'lakshanamal100@gmail.com', 'lakshanamal100@gmail.com', 'kavindya Lakshan', 'oo kiyapan'),
+(187, 'boadima7@gmail.com', 'lakshanamal100@gmail.com', 'lakshanamal100@gmail.com', 'kavindya Lakshan', 'd'),
+(188, 'boadima7@gmail.com', 'lakshanamal100@gmail.com', 'lakshanamal100@gmail.com', 'kavindya Lakshan', 'cv'),
+(189, 'boadima7@gmail.com', 'lakshanamal100@gmail.com', 'lakshanamal100@gmail.com', 'kavindya Lakshan', 'gh'),
+(190, 'boadima7@gmail.com', 'lakshanamal100@gmail.com', 'lakshanamal100@gmail.com', 'kavindya Lakshan', 'dfg');
 
 -- --------------------------------------------------------
 
@@ -405,20 +430,15 @@ CREATE TABLE `longterm` (
 --
 
 INSERT INTO `longterm` (`ltID`, `day`, `delivery_state`, `deliveredTime`, `order_id`) VALUES
-(459, '2021-01-06 00:00:00', 1, '2021-01-06 21:15:04', 1609939764),
-(460, '2021-01-09 00:00:00', 0, '0000-00-00 00:00:00', 1609939764),
-(461, '2021-01-10 00:00:00', 0, '0000-00-00 00:00:00', 1609939764),
-(462, '2021-01-11 00:00:00', 0, '0000-00-00 00:00:00', 1609939764),
-(463, '2021-01-12 00:00:00', 0, '0000-00-00 00:00:00', 1609939764),
-(464, '2021-01-13 00:00:00', 0, '0000-00-00 00:00:00', 1609939764),
-(465, '2021-01-14 00:00:00', 0, '0000-00-00 00:00:00', 1609939764),
-(466, '2021-01-15 00:00:00', 0, '0000-00-00 00:00:00', 1609939764),
-(467, '2021-01-16 00:00:00', 0, '0000-00-00 00:00:00', 1609939764),
-(468, '2021-01-17 00:00:00', 0, '0000-00-00 00:00:00', 1609939764),
-(469, '2021-01-18 00:00:00', 0, '0000-00-00 00:00:00', 1609939764),
-(470, '2021-01-19 00:00:00', 0, '0000-00-00 00:00:00', 1609939764),
-(471, '2021-01-20 00:00:00', 0, '0000-00-00 00:00:00', 1609939764),
-(472, '2021-01-21 00:00:00', 0, '0000-00-00 00:00:00', 1609939764);
+(576, '2021-03-17 00:00:00', 0, '2021-03-18 03:55:49', 1616016705),
+(577, '2021-03-17 00:00:00', 0, '2021-03-18 03:59:34', 1616016705),
+(583, '2021-03-20 00:00:00', 0, '0000-00-00 00:00:00', 1616058967),
+(584, '2021-03-21 00:00:00', 0, '0000-00-00 00:00:00', 1616058967),
+(585, '2021-03-22 00:00:00', 0, '0000-00-00 00:00:00', 1616058967),
+(586, '2021-03-23 00:00:00', 0, '0000-00-00 00:00:00', 1616058967),
+(587, '2021-03-24 00:00:00', 0, '0000-00-00 00:00:00', 1616058967),
+(588, '2021-03-25 00:00:00', 0, '0000-00-00 00:00:00', 1616058967),
+(589, '2021-03-26 00:00:00', 0, '0000-00-00 00:00:00', 1616058967);
 
 -- --------------------------------------------------------
 
@@ -441,9 +461,9 @@ CREATE TABLE `notification` (
 --
 
 INSERT INTO `notification` (`noID`, `email`, `title`, `discription`, `time`, `seen_state`, `type`) VALUES
-(1, 'lakshanamal100@gmail.com', 'Your order Accpeted', '', '00:10:19', 0, 'order'),
-(2, 'lakshanamal100@gmail.com', 'Your order Accpeted', 'Order id :1610224461', '02:04:26', 0, 'accept'),
-(3, 'lakshanamal100@gmail.com', 'Your order Accpeted', 'Order id :1610224920', '02:12:08', 0, 'order');
+(1, 'lakshanamal100@gmail.com', 'Your order Accpeted', '', '00:10:19', 1, 'order'),
+(2, 'lakshanamal100@gmail.com', 'Your order Accpeted', 'Order id :1610224461', '02:04:26', 1, 'accept'),
+(3, 'lakshanamal100@gmail.com', 'Your order Accpeted', 'Order id :1610224920', '02:12:08', 1, 'order');
 
 -- --------------------------------------------------------
 
@@ -461,24 +481,8 @@ CREATE TABLE `notifications` (
   `massageHeader` text NOT NULL,
   `massage` text NOT NULL,
   `sendDateTime` datetime NOT NULL DEFAULT current_timestamp(),
-  `redirect_url` text NOT NULL,
   `is_seen` int(11) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `notifications`
---
-
-INSERT INTO `notifications` (`notify_id`, `type_number`, `from_level`, `from_id`, `to_level`, `to_id`, `massageHeader`, `massage`, `sendDateTime`, `redirect_url`, `is_seen`) VALUES
-(1, 3, 'boardings_owner', 1, 'boarder', 3, 'Rent Payment Remainder', 'aaaaaaaaaaaaaaa', '2021-02-12 11:32:58', '', 0),
-(2, 3, 'boardings_owner', 1, 'boarder', 39, 'Rent Payment Remainder', 'February is due. Please pay the rent before 2/23/2021', '2021-02-12 12:00:06', '..controller/orderCon.php', 0),
-(3, 3, 'boardings_owner', 1, 'boarder', 39, 'Rent Payment Remainder', 'March fee payment is due. Please pay the rent before 3/23/2021', '2021-03-17 14:13:02', '../views/myads_boardingowner.php', 0),
-(4, 1, 'food_supplier', 7, 'boarder', 37, 'Order Accepted', 'your has been accepted! order id:111220', '2021-03-18 03:38:09', '', 0),
-(5, 1, 'food_supplier', 1, 'boarder', 37, 'Order Accepted', 'your has been accepted! order id:233229', '2021-03-18 03:39:07', '', 0),
-(6, 2, 'boarder', 37, 'food_supplier', 1, 'New order Arrived', 'New order customer:Amal lakshan, items: 1)rice -2 qty ,bill amount: 1700.00 ', '2021-03-18 03:42:43', '', 0),
-(7, 2, 'boarder', 38, 'food_supplier', 1, 'New order Arrived', 'New order customer:Ramya Rajapaksha, items: 1)koththu -1 qty ,bill amount: 500.00 ', '2021-03-18 03:44:03', '', 0),
-(8, 3, 'boardings_owner', 3, 'boarder', 37, 'Rent Payment Remainder', 'March payment is due. Please pay the rent before 3/21/2021', '2021-03-18 03:51:14', '', 0),
-(9, 3, 'boardings_owner', 3, 'boarder', 38, 'Rent Payment Remainder', 'March payment is due. Please pay the rent before 3/24/2021', '2021-03-18 03:51:48', '', 0);
 
 -- --------------------------------------------------------
 
@@ -564,17 +568,30 @@ CREATE TABLE `order_item` (
 --
 
 INSERT INTO `order_item` (`itemID`, `item_name`, `quantity`, `order_id`) VALUES
-(159, 'Biriani ', 3, 1609939764),
-(160, 'Cheese Kottu ', 2, 1609939764),
-(161, 'Nasi goreng Rice ', 2, 1609939764),
-(168, 'Biriani ', 2, 1610014688),
-(169, 'Cheese Kottu ', 2, 1610014688),
-(170, 'Biriani ', 2, 1610019429),
-(171, 'Cheese Kottu ', 2, 1610019429),
-(172, 'Nasi goreng Rice ', 2, 1610019429),
-(182, 'Biriani ', 1, 1610217483),
-(183, 'Biriani ', 1, 1610224461),
-(184, 'Cheese Kottu ', 1, 1610224461);
+(288, 'Idli ', 1, 1616016705),
+(289, 'Puri ', 1, 1616016705),
+(290, 'Idli ', 1, 1616022649),
+(291, 'Idli ', 1, 1616044033),
+(292, 'Paper Dosai ', 1, 1616044033),
+(294, 'Idli ', 1, 1616058939),
+(295, 'Paper Dosai ', 1, 1616058939),
+(296, 'Idli ', 1, 1616058943),
+(297, 'Paper Dosai ', 1, 1616058943),
+(298, 'Idli ', 1, 1616058967),
+(299, 'Paper Dosai ', 1, 1616058967),
+(300, 'Pani Puri ', 1, 1616058967),
+(301, 'Idli ', 1, 1616058998),
+(302, 'Paper Dosai ', 1, 1616058998),
+(303, 'Pani Puri ', 1, 1616058998),
+(304, 'Idli ', 1, 1616059001),
+(305, 'Paper Dosai ', 1, 1616059001),
+(306, 'Pani Puri ', 1, 1616059001),
+(307, 'Idli ', 1, 1616060336),
+(308, 'Paper Dosai ', 1, 1616060336),
+(312, 'Idli ', 1, 1616061512),
+(313, 'Paper Dosai ', 1, 1616061512),
+(314, 'Idli ', 1, 1616061567),
+(315, 'Paper Dosai ', 1, 1616061567);
 
 -- --------------------------------------------------------
 
@@ -708,35 +725,9 @@ CREATE TABLE `set_notification` (
   `from_BOid` int(11) NOT NULL,
   `to_Bid` int(11) NOT NULL,
   `setdate` datetime NOT NULL DEFAULT current_timestamp(),
-  `deadline_date` date NOT NULL,
   `occurance` int(11) NOT NULL,
   `massage` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `set_notification`
---
-
-INSERT INTO `set_notification` (`set_id`, `from_BOid`, `to_Bid`, `setdate`, `deadline_date`, `occurance`, `massage`) VALUES
-(3, 1, 39, '2021-02-12 10:23:30', '2021-02-25', 0, 'the monthly rent is due. Please pay before 202022222 '),
-(4, 1, 39, '2021-02-15 00:00:00', '0000-00-00', 0, 'February is due. Please pay the rent before 2/15/2021'),
-(5, 1, 39, '2021-02-12 10:30:12', '2021-02-22', 0, 'February is due. Please pay the rent before 2/22/2021'),
-(6, 1, 39, '2021-02-12 11:32:58', '2021-02-23', 0, 'February is due. Please pay the rent before 2/23/2021'),
-(7, 1, 39, '2021-02-12 12:00:06', '2021-02-23', 0, 'February is due. Please pay the rent before 2/23/2021'),
-(8, 1, 39, '2021-03-17 14:13:02', '2021-03-23', 0, 'March fee payment is due. Please pay the rent before 3/23/2021'),
-(9, 3, 37, '2021-03-18 03:51:14', '2021-03-21', 0, 'March payment is due. Please pay the rent before 3/21/2021'),
-(10, 3, 38, '2021-03-18 03:51:48', '2021-03-24', 0, 'March payment is due. Please pay the rent before 3/24/2021');
-
---
--- Triggers `set_notification`
---
-DELIMITER $$
-CREATE TRIGGER `new_payrent_remainder` AFTER INSERT ON `set_notification` FOR EACH ROW BEGIN
-INSERT INTO notifications(type_number,from_level,from_id,to_level,to_id,massageHeader,massage)
-VALUES(3,'boardings_owner',NEW.from_BOid,'boarder' ,NEW.to_Bid,'Rent Payment Remainder',NEW.massage);
-END
-$$
-DELIMITER ;
 
 -- --------------------------------------------------------
 
@@ -771,7 +762,7 @@ INSERT INTO `student` (`Reg_id`, `email`, `first_name`, `last_name`, `password`,
 (41, 'thinuli@gmail.com', 'Thinuli', 'Gothatuwa', '7c4a8d09ca3762af61e59520943dc26494f8941b', '249136a000c90d67ab6f1ced3604c7879dd4d70c109d810255d5c2eb13d433097ff08a57022b92af46801a7715d8fe0b627d', 'student', '966611444v', '', 3, '../resource/Images/a.jpg'),
 (42, 'yamuna@gmail.com', 'Yamuna', 'Rajakaruna', '7c4a8d09ca3762af61e59520943dc26494f8941b', '10d66b29e2f3faed7777581e3d06f7ec46471c02b0d8fa3e48a5f69909fa846a414bf520753cfcf109da02efb11493e7ad79', 'student', '966511965v', '', 3, '../resource/Images/a.jpg'),
 (43, 'dilshan@gmail.com', 'dilshan', 'lakshitha', '7c4a8d09ca3762af61e59520943dc26494f8941b', '09e629a6f8776b583f8da63422ca519f8f668af9f39f05c246d8039218340552057c7ea67a3e56974beea5c9629b7c67457b', 'student', '940900918v', '', 1, '../resource/Images/c.jpg'),
-(44, 'nelara@gmail.com', 'nelara', 'sanviduni', '7c4a8d09ca3762af61e59520943dc26494f8941b', '9d08b53cdd50e460431b197b9bc37716347cfcc29a4bbf73d9c2236a98b167a59bff21ac5814251ef57bfb0f4674f1c2db63', 'student', '970900918v', '', 3, '../resource/Images/a.jpg'),
+(44, 'nelara@gmail.com', 'nelara', 'sanviduni', '7c4a8d09ca3762af61e59520943dc26494f8941b', '9d08b53cdd50e460431b197b9bc37716347cfcc29a4bbf73d9c2236a98b167a59bff21ac5814251ef57bfb0f4674f1c2db63', 'student', '970900918v', '', 1, '../resource/Images/a.jpg'),
 (45, 'banda@gmail.com', 'banda', 'aaa', '7c4a8d09ca3762af61e59520943dc26494f8941b', 'ce4c43a7050c8dc1a6b0d07b8abcb8e1bd167ad132cb78cf4ebf943eac4e6b4f19a54a134c161a7d6c377656c3a56e27da25', 'student', '960900988v', '', 3, '../resource/Images/d.jpg');
 
 --
@@ -1017,7 +1008,7 @@ ALTER TABLE `food_post`
 -- AUTO_INCREMENT for table `food_request`
 --
 ALTER TABLE `food_request`
-  MODIFY `request_id` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=718;
+  MODIFY `request_id` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=793;
 
 --
 -- AUTO_INCREMENT for table `food_supplier`
@@ -1035,13 +1026,13 @@ ALTER TABLE `image`
 -- AUTO_INCREMENT for table `livesupport`
 --
 ALTER TABLE `livesupport`
-  MODIFY `cId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=173;
+  MODIFY `cId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=191;
 
 --
 -- AUTO_INCREMENT for table `longterm`
 --
 ALTER TABLE `longterm`
-  MODIFY `ltID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=480;
+  MODIFY `ltID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=590;
 
 --
 -- AUTO_INCREMENT for table `notification`
@@ -1053,13 +1044,13 @@ ALTER TABLE `notification`
 -- AUTO_INCREMENT for table `notifications`
 --
 ALTER TABLE `notifications`
-  MODIFY `notify_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `notify_id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `order_item`
 --
 ALTER TABLE `order_item`
-  MODIFY `itemID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=198;
+  MODIFY `itemID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=316;
 
 --
 -- AUTO_INCREMENT for table `payfee`
@@ -1083,7 +1074,7 @@ ALTER TABLE `request`
 -- AUTO_INCREMENT for table `set_notification`
 --
 ALTER TABLE `set_notification`
-  MODIFY `set_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `set_id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `student`
